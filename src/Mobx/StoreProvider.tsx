@@ -1,19 +1,23 @@
 import React from "react";
 import { CoWorkerStore } from "./Stores/CoWorkerStore";
+import { ObservableCoWorkerStore } from "./Stores/ObservableCoWorkerStore";
 
 interface Props {}
 
 export type RootStore = {
   coWorkerStore: CoWorkerStore;
+  observableCoWorkerStore: ObservableCoWorkerStore;
 };
 
 const storeContext = React.createContext<RootStore | null>(null);
 
 export function createRootStore(): RootStore {
   const coWorkerStore = new CoWorkerStore();
+  const observableCoWorkerStore = new ObservableCoWorkerStore();
 
   const rootStore: RootStore = {
     coWorkerStore,
+    observableCoWorkerStore,
   };
 
   return rootStore;
